@@ -1,0 +1,13 @@
+exports.getLimit = function(sender, limitCount, _db){
+    let found = false
+    _db.forEach((data, i) => {
+        if (data.id === sender) {
+            found = i
+        }
+    })
+    if (found !== false) {
+        return limitCount - _db[found].limit
+    } else {
+        return limitCount
+    }
+}
